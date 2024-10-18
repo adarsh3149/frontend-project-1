@@ -8,10 +8,10 @@ export const CallToAction = () => {
       <div className="container">
         <div className="relative ">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-            <Hexagon className="size-[700px]" />
+            <Hexagon className="size-[700px]" size={700} reverse/>
           </div>
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-            <Hexagon className="size-[1100px]" />
+            <Hexagon className="size-[1100px]" size={1100}/>
           </div>
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
           <Circle className="absolute left-0 -top-[400px]">
