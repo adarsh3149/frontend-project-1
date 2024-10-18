@@ -1,4 +1,5 @@
 import { twMerge } from "tailwind-merge";
+import { motion } from "framer-motion";
 
 const testimonials = [
   {
@@ -8,16 +9,16 @@ const testimonials = [
     avatarImage: "/assets/images/avatar-erica-wyatt.jpg",
   },
   {
-    text:"Our productivity has skyrocketed since we started using Blockforge.It's a game-changer for our team",
-    name:"Noel Baldwin",
-    title:"Lead Developer - BitBridege",
-    avatarImage:"/assets/images/avatar-noel-baldwin.jpg"
+    text: "Our productivity has skyrocketed since we started using Blockforge.It's a game-changer for our team",
+    name: "Noel Baldwin",
+    title: "Lead Developer - BitBridege",
+    avatarImage: "/assets/images/avatar-noel-baldwin.jpg",
   },
   {
-    text:"The integration process was seamless,and the performance improvements are beyond our expectation",
-    name:"Harry Bender",
-    title:"CTO - CryptoSolutions",
-    avatarImage:"/assets/images/avatar-harry-bender.jpg"
+    text: "The integration process was seamless,and the performance improvements are beyond our expectation",
+    name: "Harry Bender",
+    title: "CTO - CryptoSolutions",
+    avatarImage: "/assets/images/avatar-harry-bender.jpg",
   },
 ];
 
@@ -28,7 +29,26 @@ export const Testimonials = () => {
         <div className="grid grid-cols-1 gap-16 md:gap-8 lg:gap-12 md:grid-cols-2 lg:grid-cols-3">
           {[
             testimonials.map((testimonial, index) => (
-              <blockquote key={index} className={twMerge((index === 2) && 'md:hidden lg:block')}>
+              <motion.blockquote
+                key={index}
+                initial={{
+                  opacity:0,
+                  y:24
+                }}
+                whileInView={{
+                  opacity:1,
+                  y:0
+                }}
+                viewport={{
+                  once: true
+                }}
+                transition={{
+                  delay:index*0.5,
+                  ease:"easeInOut",
+                  duration:1
+                }}
+                className={twMerge(index === 2 && "md:hidden lg:block")}
+              >
                 <p className="font-heading text-3xl lg:text-4xl font-black">
                   &ldquo;{testimonial.text}&rdquo;
                 </p>
@@ -39,7 +59,6 @@ export const Testimonials = () => {
                         className="size-16 bg-zinc-700 rounded-full bg-cover"
                         style={{
                           backgroundImage: `url(${testimonial.avatarImage})`,
-                          
                         }}
                       ></div>
                     </div>
@@ -53,7 +72,7 @@ export const Testimonials = () => {
                     </div>
                   </div>
                 </cite>
-              </blockquote>
+              </motion.blockquote>
             )),
           ]}
         </div>
